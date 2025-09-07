@@ -1,0 +1,4 @@
+*.pyc
+*.env
+sec.py
+e_library.db
