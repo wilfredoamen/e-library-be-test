@@ -2,25 +2,39 @@ name: Backend CI Pipeline
 
 on:
   push:
-    branches: [ dev, main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ dev, main ]
+    branches: [ "main" ]
 
 jobs:
-  build:
+  build-test-lint:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Environment
-        run: echo "Placeholder for backend setup (Node.js/Express, etc.)"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      - name: Install Dependencies
-        run: echo "Placeholder for installing backend dependencies"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install ruff black pytest
 
-      - name: Run Tests
-        run: echo "Placeholder for running backend tests"
+      - name: Lint with Ruff
+        run: ruff check .
 
-      - name: Build Docker Image
-        run: echo "Placeholder for backend Docker build & push"
+      - name: Check formatting with Black
+        run: black --check .
+
+      - name: Run tests with pytest (SQLite)
+        env:
+          DATABASE_URL: sqlite:///./test.db
+        run: pytest -v
+
+      - name: Build Docker image
+        run: docker build -t e-library-be .
