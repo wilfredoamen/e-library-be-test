@@ -1,0 +1,14 @@
+repos:
+  # Ruff linter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.8  # pick a stable release
+    hooks:
+      - id: ruff
+        args: [--fix]  # auto-fix simple issues
+
+  # Black formatter
+  - repo: https://github.com/psf/black
+    rev: 23.12.1  # pick a stable release
+    hooks:
+      - id: black
+    

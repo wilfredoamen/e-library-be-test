@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 from .database_setup import engine
 
+
 def configure_cors(app: FastAPI) -> None:
     """Configure CORS middleware for the FastAPI app."""
     app.add_middleware(
@@ -13,7 +14,7 @@ def configure_cors(app: FastAPI) -> None:
         allow_headers=["*"],
     )
 
-#each time we start a server create the  new table if needed
+
+# each time we start a server create the  new table if needed
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
