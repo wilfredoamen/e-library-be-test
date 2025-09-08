@@ -3,9 +3,7 @@
 max-line-length = 120
 
 # Ignore rules that conflict with common practices or formatters
-ignore = 
-    E203  # whitespace before ':'
-    W503  # line break before binary operator
+ignore = E203, W503
 
 # Exclude folders that don’t need linting
 exclude = 
