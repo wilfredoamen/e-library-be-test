@@ -1,0 +1,20 @@
+[flake8]
+# Allow longer lines (PEP8 default is 79, but modern projects use 100–120)
+max-line-length = 120
+
+# Ignore rules that conflict with common practices or formatters
+ignore = 
+    E203  # whitespace before ':'
+    W503  # line break before binary operator
+
+# Exclude folders that don’t need linting
+exclude = 
+    .git,
+    __pycache__,
+    build,
+    dist,
+    venv,
+    migrations
+
+# Optional: set a complexity threshold (warns on very complex functions)
+max-complexity = 10
