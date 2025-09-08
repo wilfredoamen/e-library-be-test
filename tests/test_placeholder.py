@@ -1,3 +1,5 @@
+# tests/test_placeholder.py
+
 def test_placeholder():
-    """A dummy test to ensure pytest runs successfully."""
+    """Dummy test so CI/CD passes until real tests exist."""
     assert True
