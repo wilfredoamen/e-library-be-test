@@ -4,7 +4,7 @@ from sqlmodel import create_engine
 from sqlmodel import Session
 import os
 
-##database connection takes in db url, defining the db using sql lite
+# database connection takes in db url, defining the db using sql lite
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./e_library.db")
 
 # SQLModel engine
